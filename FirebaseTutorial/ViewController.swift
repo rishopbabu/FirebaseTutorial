@@ -99,15 +99,15 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                     if snapshot.childrenCount > 0 {
                         self.nameList.removeAll()
         
-                        for names in snapshot.children.allObjects as! [DataSnapshot] {
-                            let nameObject = names.value as? [String: AnyObject]
+                        for resource in snapshot.children.allObjects as! [DataSnapshot] {
+                            let nameObject = resource.value as? [String: AnyObject]
                             let nameName = nameObject?["name"]
                             let nameId = nameObject?["id"]
                             let nameDesignation = nameObject?["designation"]
         
-                            let namee = NameModel(id: nameId as! String?, name: nameName as! String?, designation: nameDesignation as! String?)
+                            let resource = NameModel(id: nameId as! String?, name: nameName as! String?, designation: nameDesignation as! String?)
         
-                            self.nameList.append(namee)
+                            self.nameList.append(resource)
                         }
                         self.nameListTableView.reloadData()
                     }
